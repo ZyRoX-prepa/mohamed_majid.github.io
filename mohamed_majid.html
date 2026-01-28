@@ -30,41 +30,54 @@
             z-index: -1;
         }
 
-        /* --- AJOUTS HAUT DE PAGE --- */
+        /* --- HEADER : CERCLE ROBOT & TITRE --- */
         .header-profile {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 120px;
-            margin-bottom: -40px;
+            padding-top: 130px;
+            margin-bottom: -30px;
         }
+        
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 15px var(--primary-glow); border-color: var(--primary); }
+            50% { box-shadow: 0 0 35px var(--secondary); border-color: var(--secondary); }
+            100% { box-shadow: 0 0 15px var(--primary-glow); border-color: var(--primary); }
+        }
+
         .profile-circle {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            border: 2px solid var(--primary);
-            background: var(--glass);
-            box-shadow: 0 0 30px var(--primary-glow);
+            border: 3px solid var(--primary);
+            background: #000;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            animation: pulse-border 4s infinite ease-in-out;
             transition: 0.5s;
         }
-        .profile-circle:hover { transform: scale(1.05); border-color: var(--secondary); box-shadow: 0 0 30px var(--secondary); }
-        .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.1) brightness(1.1);
+        }
         
         .ai-title {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             color: #fff;
             margin-top: 20px;
             text-transform: uppercase;
-            letter-spacing: 6px;
+            letter-spacing: 8px;
             background: linear-gradient(to right, #fff, var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-align: center;
         }
 
         /* Navigation */
@@ -79,7 +92,7 @@
         nav a { color: #aaa; text-decoration: none; font-size: 0.7rem; text-transform: uppercase; font-weight: 600; transition: 0.3s; }
         nav a:hover { color: var(--secondary); text-shadow: 0 0 10px var(--secondary); }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 120px 5% 50px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 5% 50px; }
         .glass-card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; margin: 2.5rem 0; backdrop-filter: blur(10px); scroll-margin-top: 100px; transition: 0.3s; }
         .glass-card:hover { border-color: rgba(112, 0, 255, 0.3); }
 
@@ -110,12 +123,17 @@
         .news-card { background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 15px; border: 1px solid var(--border); }
         .news-tag { color: var(--primary); font-size: 0.7rem; font-weight: 800; margin-bottom: 0.8rem; display: block; }
 
-        /* --- SECTION CONTACT SIMPLIFIÉE --- */
-        .contact-info-container { display: flex; flex-direction: column; gap: 2rem; }
-        .contact-item { display: flex; align-items: center; gap: 20px; padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 15px; border: 1px solid var(--border); transition: 0.3s; text-decoration: none; color: inherit; }
-        .contact-item:hover { background: rgba(112, 0, 255, 0.05); border-color: var(--primary); transform: translateX(10px); }
-        .contact-icon { font-family: 'Fira Code', monospace; color: var(--secondary); font-weight: 700; min-width: 100px; font-size: 0.8rem; }
-        .contact-value { font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; }
+        /* --- SECTION CONTACT --- */
+        .contact-container { display: flex; flex-direction: column; gap: 1.5rem; }
+        .contact-link { 
+            display: flex; align-items: center; gap: 20px; padding: 1.5rem; 
+            background: rgba(255,255,255,0.02); border-radius: 15px; 
+            border: 1px solid var(--border); text-decoration: none; color: #fff; 
+            transition: 0.3s;
+        }
+        .contact-link:hover { background: rgba(112, 0, 255, 0.08); border-color: var(--primary); transform: translateX(10px); }
+        .contact-label { font-family: 'Fira Code', monospace; color: var(--secondary); font-size: 0.8rem; min-width: 100px; }
+        .contact-text { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 500; }
 
         .github-qr-dock { position: fixed; left: 30px; bottom: 30px; background: #fff; padding: 12px; border-radius: 15px; display: flex; align-items: center; gap: 15px; border: 2px solid var(--primary); z-index: 2000; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
         .github-qr-dock img { width: 65px; height: 65px; }
@@ -125,7 +143,7 @@
             .intro-grid, .bento-grid { grid-template-columns: 1fr; }
             .bento-large { grid-column: span 1; }
             nav ul { display: none; }
-            .ai-title { font-size: 1.8rem; }
+            .ai-title { font-size: 2rem; }
         }
     </style>
 </head>
@@ -148,7 +166,7 @@
 
     <header class="header-profile">
         <div class="profile-circle">
-            <img src="wiz.jpg" alt="Mohamed Majid">
+            <img src="https://images.unsplash.com/photo-1546776310-eef45dd6d63c?auto=format&fit=crop&q=80&w=300&h=300" alt="AI Robot">
         </div>
         <h1 class="ai-title">AI Evolution</h1>
     </header>
@@ -241,15 +259,15 @@
         </section>
 
         <section id="contact" class="glass-card">
-            <h2>08. Nexus Data Contact</h2>
-            <div class="contact-info-container">
-                <a href="mailto:mohamedmajid3333@gmail.com" class="contact-item">
-                    <span class="contact-icon">[EMAIL]</span>
-                    <span class="contact-value">mohamedmajid3333@gmail.com</span>
+            <h2>08. Contact Direct</h2>
+            <div class="contact-container">
+                <a href="mailto:mohamedmajid3333@gmail.com" class="contact-link">
+                    <span class="contact-label">[MAIL]</span>
+                    <span class="contact-text">mohamedmajid3333@gmail.com</span>
                 </a>
-                <a href="tel:+212642655707" class="contact-item">
-                    <span class="contact-icon">[PHONE]</span>
-                    <span class="contact-value">+212 6 42 65 57 07</span>
+                <a href="tel:+212642655707" class="contact-link">
+                    <span class="contact-label">[PHONE]</span>
+                    <span class="contact-text">+212 6 42 65 57 07</span>
                 </a>
             </div>
         </section>

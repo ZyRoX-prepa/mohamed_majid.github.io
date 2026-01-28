@@ -30,6 +30,43 @@
             z-index: -1;
         }
 
+        /* --- AJOUTS HAUT DE PAGE --- */
+        .header-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 120px;
+            margin-bottom: -40px;
+        }
+        .profile-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            background: var(--glass);
+            box-shadow: 0 0 30px var(--primary-glow);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+        }
+        .profile-circle:hover { transform: scale(1.05); border-color: var(--secondary); box-shadow: 0 0 30px var(--secondary); }
+        .profile-circle img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .ai-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            background: linear-gradient(to right, #fff, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         /* Navigation */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
@@ -48,37 +85,38 @@
 
         h2 { font-family: var(--font-heading); margin-bottom: 2rem; color: #fff; border-left: 4px solid var(--primary); padding-left: 20px; font-size: 1.8rem; }
 
-        /* 01. Intro Section Améliorée */
         .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
         .intro-text p { font-size: 1.1rem; margin-bottom: 1.5rem; color: #ccc; }
         .intro-visual { position: relative; }
         .intro-image { width: 100%; border-radius: 20px; border: 1px solid var(--primary); box-shadow: 0 0 40px var(--primary-glow); }
 
-        /* 03. Bento Grid Capacités */
         .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2.5rem 0; scroll-margin-top: 100px; }
         .bento-item { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 2rem; border-radius: 20px; transition: 0.3s; }
         .bento-item:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); }
         .bento-item h4 { color: var(--secondary); margin-bottom: 1rem; font-family: var(--font-heading); font-size: 1.2rem; }
         .bento-large { grid-column: span 2; }
 
-        /* 04. Benchmark Détaillé */
         .table-wrapper { overflow-x: auto; margin-top: 1rem; }
         table { width: 100%; border-collapse: collapse; min-width: 700px; }
         th { text-align: left; padding: 1.2rem; color: var(--secondary); border-bottom: 2px solid var(--primary); font-family: var(--font-heading); text-transform: uppercase; font-size: 0.8rem; }
         td { padding: 1.2rem; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
         .status-pill { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; background: rgba(0, 212, 255, 0.1); color: var(--secondary); border: 1px solid var(--secondary); }
 
-        /* 05. Terminal & 06. Video */
         .terminal { background: #000; border-radius: 15px; padding: 1.5rem; font-family: 'Fira Code', monospace; font-size: 0.85rem; border: 1px solid #333; height: 200px; overflow-y: auto; }
         .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 20px; overflow: hidden; border: 1px solid var(--primary); }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* 07. News Techmeme */
         .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
         .news-card { background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 15px; border: 1px solid var(--border); }
         .news-tag { color: var(--primary); font-size: 0.7rem; font-weight: 800; margin-bottom: 0.8rem; display: block; }
 
-        /* QR Code Dock */
+        /* --- SECTION CONTACT SIMPLIFIÉE --- */
+        .contact-info-container { display: flex; flex-direction: column; gap: 2rem; }
+        .contact-item { display: flex; align-items: center; gap: 20px; padding: 1.5rem; background: rgba(255,255,255,0.02); border-radius: 15px; border: 1px solid var(--border); transition: 0.3s; text-decoration: none; color: inherit; }
+        .contact-item:hover { background: rgba(112, 0, 255, 0.05); border-color: var(--primary); transform: translateX(10px); }
+        .contact-icon { font-family: 'Fira Code', monospace; color: var(--secondary); font-weight: 700; min-width: 100px; font-size: 0.8rem; }
+        .contact-value { font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; }
+
         .github-qr-dock { position: fixed; left: 30px; bottom: 30px; background: #fff; padding: 12px; border-radius: 15px; display: flex; align-items: center; gap: 15px; border: 2px solid var(--primary); z-index: 2000; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
         .github-qr-dock img { width: 65px; height: 65px; }
         .qr-text { color: #000; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 800; }
@@ -87,6 +125,7 @@
             .intro-grid, .bento-grid { grid-template-columns: 1fr; }
             .bento-large { grid-column: span 1; }
             nav ul { display: none; }
+            .ai-title { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -103,8 +142,16 @@
             <li><a href="#logs">05. Logs</a></li>
             <li><a href="#video">06. Futur</a></li>
             <li><a href="#news">07. News</a></li>
+            <li><a href="#contact">08. Contact</a></li>
         </ul>
     </nav>
+
+    <header class="header-profile">
+        <div class="profile-circle">
+            <img src="wiz.jpg" alt="Mohamed Majid">
+        </div>
+        <h1 class="ai-title">AI Evolution</h1>
+    </header>
 
     <main class="container">
         
@@ -193,6 +240,20 @@
             <div class="news-grid" id="techmeme-feed"></div>
         </section>
 
+        <section id="contact" class="glass-card">
+            <h2>08. Nexus Data Contact</h2>
+            <div class="contact-info-container">
+                <a href="mailto:mohamedmajid3333@gmail.com" class="contact-item">
+                    <span class="contact-icon">[EMAIL]</span>
+                    <span class="contact-value">mohamedmajid3333@gmail.com</span>
+                </a>
+                <a href="tel:+212642655707" class="contact-item">
+                    <span class="contact-icon">[PHONE]</span>
+                    <span class="contact-value">+212 6 42 65 57 07</span>
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <div class="github-qr-dock">
@@ -205,7 +266,6 @@
     </footer>
 
     <script>
-        // Graphique Dynamique avec Gradient
         const ctx = document.getElementById('evolutionChart').getContext('2d');
         const gradient = ctx.createLinearGradient(0, 0, 0, 350);
         gradient.addColorStop(0, 'rgba(112, 0, 255, 0.4)');
@@ -238,7 +298,6 @@
             }
         });
 
-        // Logs Système
         const logLines = [
             {t: "[SYS]", m: "Neural network synchronization... 100%"},
             {t: "[OK]", m: "Quantum node Paris-09 connected via SSL"},
@@ -254,7 +313,6 @@
             }, i * 1200);
         });
 
-        // News Simulation Techmeme
         const news = [
             {t: "HARDWARE", h: "NVIDIA H200 chips reach 95% market penetration in EU."},
             {t: "VENTURE", h: "Mistral AI raises $4B for next-gen reasoning models."},
